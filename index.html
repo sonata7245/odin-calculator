@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,39 +9,48 @@
     <script src="app.js" defer></script>
     <title>Odin Calculator</title>
 </head>
+
 <body>
-<container id="calculator">
-    <div id="display"><h1>0</h1></div>
-    <div class="div-functionButton">
-        <button class="functionButton" id="clearButton">Clear</button>
-        <button class="functionButton" id="deleteButton">Delete</button>
-    </div>
 
-<container id="buttons">
-        <div id="nums">
+    <main>
+        <container id="calculator">
+            <div id="display">
+                <h1>0</h1>
+            </div>
 
-        <button class="numPad" id="num7">7</button>
-        <button class="numPad" id="num8">8</button>
-        <button class="numPad" id="num9">9</button>
-        <button class="numPad" id="num4">4</button>
-        <button class="numPad" id="num5">5</button>
-        <button class="numPad" id="num6">6</button>
-        <button class="numPad" id="num1">1</button>
-        <button class="numPad" id="num2">2</button>
-        <button class="numPad" id="num3">3</button>
-        <button class="numPad" id="num0">0</button>
-        <button class="numPad" id="numPeriod">.</button>
-    </div>
-    <div id="operators">
-        <button class="operand" id="numPlus">+</button>
-        <button class="operand" id="numMinus">-</button>
-        <button class="operand" id="numMultiply">X</button>
-        <button class="operand" id="numDivide">/</button>
-    </div>
-</container>
+            <container class="buttons-grid">
+
+                <button class="span2" id="clearButton">Clear</button>
+                <button class="span2" id="deleteButton">Delete</button>
 
 
-</container>
-    
+
+                <button class="numPad" id="num7">7</button>
+                <button class="numPad" id="num8">8</button>
+                <button class="numPad" id="num9">9</button>
+                <button class="operand" id="numDivide">&#247;</button>
+                <button class="numPad" id="num4">4</button>
+                <button class="numPad" id="num5">5</button>
+                <button class="numPad" id="num6">6</button>
+                <button class="operand" id="numMultiply">&#215;</button>
+                <button class="numPad" id="num1">1</button>
+                <button class="numPad" id="num2">2</button>
+                <button class="numPad" id="num3">3</button>
+                <button class="operand" id="numPlus">&#43;</button>
+                <button class="numPad" id="num0">0</button>
+                <button class="numPad" id="numPeriod">.</button>
+                <button class="operand" id="numEquals">=</button>
+                <button class="operand" id="numMinus">&#45;</button>
+
+
+
+
+            </container>
+
+
+        </container>
+    </main>
+
 </body>
+
 </html>
