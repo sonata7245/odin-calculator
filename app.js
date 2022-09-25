@@ -43,19 +43,15 @@ function doSomeMath(e) {
             i = 1;
         }
     }
-    else if (e.classList.value === "span2") {
-        if (e.id === "clearButton") {
-            numbers = ["", "", ""];
-            i = 0;
-            updateDisplay(0);
-            checkDelete();
+    else if (e.id === "clearButton") {
+            fullReset()
         }
-        else if (e.id === "deleteButton") {
-            numbers[i] = numbers[i].slice(0, -1);
-            updateDisplay(numbers[i]);
+    else if (e.id === "deleteButton") {
+        numbers[i] = numbers[i].slice(0, -1);
+        updateDisplay(numbers[i]);
         }
     }
-}
+
 
 
 function operations(arrayOfNumbers, operator) {
@@ -90,6 +86,13 @@ function resetAfterOp() {
     i = 0;
 }
 
+function fullReset(){
+    numbers[2] = "";
+    resetAfterOp();
+    updateDisplay("Enter a Number");
+    checkDelete();
+}
+
 
 function updateDisplay(num) {
     const display = document.querySelector('#display');
@@ -112,6 +115,9 @@ window.addEventListener('keydown', (e) => {
       if(e.code === "NumpadMultiply"){e.id = "numMultiply"}
       if(e.code === "NumpadDivide"){e.id = "numDivide"}
       if(e.code === "NumpadEnter"){e.id = "numEquals"}
+      if(e.code === "Backspace"){e.id = "deleteButton"}
+      if(e.code === "Delete"){e.id = "clearButton"}
+      if(e.code === "NumpadDecimal"){e.id = "numPeriod"}
       console.log(e)
       doSomeMath(e)
     }
