@@ -1,40 +1,96 @@
-const add = function(a, b) {
-	return a + b;
-};
+let numbers = ["", "", ""];
+let i = 0
+let operand;
 
-const subtract = function(a, b) {
-	return a - b;
-};
+const numberButtons = document.querySelector('.buttons-grid');
+numberButtons.addEventListener('click', function (e) { doSomeMath(e.target) })
 
-// const sum = function(array) {
-// 	 const total = array.reduce((a, b) => a + b, 0);
-//   return total
-//   };
+const deleteBtn = document.querySelector('#deleteButton')
+deleteBtn.disabled = true;
 
-const multiply = function(a,b) {
-  return a * b
-};
+function checkDelete() {
+    if (numbers[0] === "" && numbers[1] === "") {
+        deleteBtn.disabled = true;
+    }
+    else {
+        deleteBtn.disabled = false;
+    }
+}
 
-const divide = function(a,b) {
-    return a / b
-  };
+function doSomeMath(e) {
 
-const power = function(a, b) {
-	return a ** b;
-};
+    if (e.classList.value === "numPad") {
+        numbers[i] += e.id.slice(3);
+        checkDelete();
+        updateDisplay(numbers[i]);
+        return parseInt(numbers[i]);
+    }
+    else if (e.classList.value === "operand") {
+        if (e.id === "numEquals") {
+            if (numbers[2] != "") {
+                numbers[0] = numbers[2];
+            }
+            operations(numbers, operand);
+            checkDelete();
+        }
+        else {
+            operand = e.id.slice(3);
+            i = 1;
+        }
+    }
+    else if (e.classList.value === "span2") {
+        if (e.id === "clearButton") {
+            numbers = ["", "", ""];
+            i = 0;
+            updateDisplay(0);
+            checkDelete();
+        }
+        else if (e.id === "deleteButton") {
+            numbers[i] = numbers[i].slice(0, -1);
+            updateDisplay(numbers[i]);
+            return parseInt(numbers[i]);
+        }
+    }
+}
 
-// const factorial = function factorials(a) {
-//   let answer = 1
-//   if (a === 1 || a === 0){
-//     return answer;
-//   }
-//   else{
-// 	for (let i = a; i >= 1; i--){
-//     answer = answer * i;
-//   }
-//     return answer;}
-//   };
 
-  function twoNumOperate(a, b, operator){
-    return operator(a, b);
-  }
+function operations(arrayOfNumbers, operator) {
+    switch (operator) {
+        case "Add":
+            numbers[2] = (parseInt(arrayOfNumbers[0]) + parseInt(arrayOfNumbers[1])).toString();
+            resetAfterOp();
+            updateDisplay(numbers[2]);
+            break;
+        case "Subtract":
+            numbers[2] = (parseInt(arrayOfNumbers[0]) - parseInt(arrayOfNumbers[1])).toString();
+            resetAfterOp();
+            updateDisplay(numbers[2]);
+            break;
+        case "Multiply":
+            numbers[2] = (parseInt(arrayOfNumbers[0]) * parseInt(arrayOfNumbers[1])).toString();
+            resetAfterOp();
+            updateDisplay(numbers[2]);
+            break;
+        case "Divide":
+            numbers[2] = (parseInt(arrayOfNumbers[0]) / parseInt(arrayOfNumbers[1])).toString();
+            resetAfterOp();
+            updateDisplay(numbers[2]);
+            break;
+
+    }
+}
+
+function resetAfterOp() {
+    numbers[0] = "";
+    numbers[1] = "";
+    i = 0;
+}
+
+
+function updateDisplay(num) {
+    const display = document.querySelector('#display');
+    display.textContent = num;
+}
+
+
+
