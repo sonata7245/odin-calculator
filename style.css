@@ -85,3 +85,19 @@ button:hover{
     margin: .2rem;
 
 }
+
+#numEquals{
+    background-color: rgb(155, 45, 45);
+}
+
+#numEquals:hover{
+    background-color: rgb(135, 45, 45);
+}
+
+#clearButton{
+    background-color: rgb(200, 140, 25);
+}
+
+#clearButton:hover{
+    background-color: rgb(215, 140, 25);
+}
