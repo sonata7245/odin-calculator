@@ -23,7 +23,6 @@ function doSomeMath(e) {
         numbers[i] += e.id.slice(3);
         checkDelete();
         updateDisplay(numbers[i]);
-        return parseInt(numbers[i]);
     }
     else if (e.classList.value === "operand") {
         if (e.id === "numEquals") {
@@ -48,7 +47,6 @@ function doSomeMath(e) {
         else if (e.id === "deleteButton") {
             numbers[i] = numbers[i].slice(0, -1);
             updateDisplay(numbers[i]);
-            return parseInt(numbers[i]);
         }
     }
 }
